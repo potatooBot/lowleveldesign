@@ -1,0 +1,177 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "Parking_Lot.TestingPark",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_52553206 { 
+   	label=Parking_Lot
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   TestingPark52553206[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TestingPark</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_646160747 { 
+   	label=Service
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   ParkingLot2134712655[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ParkingLot</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   fourwheeler: List&lt;Slot&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   parkingLot: ParkingLot [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   twowheeler: List&lt;Slot&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ clearAll()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ initializeParkingSlots(numberoftwowheelerslots: int, numberoffourwheelerslots: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ park(vehicle: Vehicle): Ticket</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_74517257 { 
+   	label=Model
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Slot609280549[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Slot</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   isEmpty: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   number: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   parkVehicle: Vehicle [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ occupy(parkVehicle: Vehicle)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ vacate(parkVehicle: Vehicle)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Vehicle609280549[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Vehicle</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   vehicleNumber: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   vehicleSize: VehicleSize [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+ParkingLot2134712655 -> Slot609280549[label="fourwheeler
+[0..*]"];
+ParkingLot2134712655 -> Slot609280549[label="twowheeler
+[0..*]"];
+Slot609280549 -> Vehicle609280549[label="parkVehicle
+[0..1]"];
+TestingPark52553206 -> ParkingLot2134712655[label="main() -> initializeParkingSlots()"];
+    
+}
+@enduml

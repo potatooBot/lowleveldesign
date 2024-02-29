@@ -1,0 +1,184 @@
+@startuml
+
+/' diagram meta data start
+config=CallConfiguration;
+{
+  "rootMethod": "OberverPattern.Driver#main(String[])",
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showMethodParametersTypes": false,
+    "showMethodParametersNames": false,
+    "showMethodReturnType": false,
+    "showPackageLevels": 2,
+    "showCallOrder": false,
+    "edgeMode": "MethodsOnly", // TypesOnly, MethodsOnly, TypesAndMethods, MethodsAndDirectTypeUsage
+    "showDetailedClassStructure": false
+  },
+  "rootClass": "OberverPattern.Driver",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="LR"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_407307187 { 
+   	label=OberverPattern
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1544432905 { 
+   	label=Driver
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   Driver407307187XXXmain1859653459[
+	label="+ main()"
+	style=filled
+	fillcolor=white
+	tooltip="Driver
+
+null"
+	penwidth=4
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_292656244 { 
+   	label=SubjectImplmentation
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   SubjectImplmentation407307187XXXnotifyAllObserver0[
+	label="+ notifyAllObserver()"
+	style=filled
+	fillcolor=white
+	tooltip="SubjectImplmentation
+
+null"
+	fontcolor=darkgreen
+];
+
+SubjectImplmentation407307187XXXpostMessage1808118735[
+	label="+ postMessage()"
+	style=filled
+	fillcolor=white
+	tooltip="SubjectImplmentation
+
+null"
+	fontcolor=darkgreen
+];
+
+SubjectImplmentation407307187XXXregister413251318[
+	label="+ register()"
+	style=filled
+	fillcolor=white
+	tooltip="SubjectImplmentation
+
+null"
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_47395063 { 
+   	label=ObserverImplementation
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   ObserverImplementation407307187XXXupdate0[
+	label="+ update()"
+	style=filled
+	fillcolor=white
+	tooltip="ObserverImplementation
+
+null"
+	fontcolor=darkgreen
+];
+
+ObserverImplementation407307187XXXupdate1808118735[
+	label="+ update()"
+	style=filled
+	fillcolor=white
+	tooltip="ObserverImplementation
+
+null"
+	fontcolor=darkgreen
+];
+} 
+} 
+
+'edges    
+Driver407307187XXXmain1859653459 -> ObserverImplementation407307187XXXupdate0;
+Driver407307187XXXmain1859653459 -> SubjectImplmentation407307187XXXpostMessage1808118735;
+Driver407307187XXXmain1859653459 -> SubjectImplmentation407307187XXXregister413251318;
+SubjectImplmentation407307187XXXnotifyAllObserver0 -> ObserverImplementation407307187XXXupdate1808118735;
+SubjectImplmentation407307187XXXpostMessage1808118735 -> SubjectImplmentation407307187XXXnotifyAllObserver0;
+    
+}
+@enduml
