@@ -97,4 +97,6 @@ map.put(4,"Hola");
 map.put(5,"Heyyyoooo");
     System.out.println(map.get(1));
     }
+
 }
+//OutPut=Hey
